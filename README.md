@@ -231,9 +231,109 @@ plt.ylabel('Make and Model')
 # Adjust the layout to prevent overlap and ensure everything fits well in the figure and display it
 plt.tight_layout();
 ```
+### whats the relationship between the numerical 
 
+```
+# Select relevant numerical columns for correlation analysis
+numerical_columns = ['total_injuries', 'total_fatal_injuries', 'total_serious_injuries', 'total_minor_injuries']
 
+# Calculate the correlation matrix
+correlation_matrix = data1[numerical_columns].corr()
 
+# Display the correlation matrix
+correlation_matrix
+```
+plot
+```
+# Set the size of the plot
+plt.figure(figsize=(8, 6))
 
+# Create a heatmap to visualize the correlation matrix
+sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap='coolwarm', square=True, cbar_kws={"shrink": .8})
 
+# Add titles and labels and display the heatmap
+plt.title('Correlation Matrix of Injury Variables');
+```
+### which aircraft manufacturers and models have high accident rates
+```
+# Group by Manufacturer and Model to count accidents
+accident_counts = data1.groupby(['make', 'model']).size().reset_index(name='total_accidents')
+# Group by Manufacturer and Model to sum fatalities
+fatality_counts = data1.groupby(['make', 'model'])['total_injuries'].sum().reset_index(name='total_sum_fatalities')
 
+# Merge accident and fatality data
+merged_data = pd.merge(accident_counts, fatality_counts, on=['make', 'model',])
+
+# Calculate accident rate (accidents per model)
+merged_data['accident_rate'] = merged_data['total_accidents'] / merged_data['total_accidents'].sum()
+
+# Set the style of seaborn
+sns.set(style="whitegrid")
+
+# Create a new figure with a specified size (width, height)
+plt.figure(figsize=(15, 8))
+
+# Create a bar plot using Seaborn to visualize the total accidents by aircraft model
+# The data is sorted by 'total_accidents' in descending order and the top 20 entries are selected
+sns.barplot(data=merged_data.sort_values(by='total_accidents', ascending=False).head(20), 
+            x='total_accidents', y='model', hue='make', palette='viridis')
+
+# Set the title of the plot to describe what is being visualized
+plt.title('Top 20 Aircraft Models by Total Accidents')
+
+# Label the x-axis to indicate what the values represent
+plt.xlabel('Total Accidents')
+
+# Label the y-axis to indicate what the categories represent
+plt.ylabel('Aircraft Model')
+
+# Add a legend to the plot to indicate the different manufacturers (makes) and display
+plt.legend(title='Make');
+```
+
+### safest aircrafts
+```
+# Filter the DataFrame for rows where investigation_type indicates an accident
+accident_data = data1[data1['investigation_type'] == 'Accident']
+
+# Group by aircraft type and calculate total accidents per craft and total fatalities per craft
+aircraft_stats = data1.groupby('aircraft_category').agg({'investigation_type': 'count', 'total_injuries': 'sum'}).reset_index()
+aircraft_stats.columns = ['aircraft', 'total_accidents_per_craft', 'total_fatalities_per_craft']
+
+# Sort by Total Accidents per craft to find the safest aircraft
+safest_aircraft = aircraft_stats.sort_values(by='total_accidents_per_craft').head(10)
+
+# Set the style of seaborn
+sns.set(style="whitegrid")
+
+# Bar Plot for Total Accidents
+plt.figure(figsize=(12, 6))
+sns.barplot(data=safest_aircraft, x='total_accidents_per_craft', y='aircraft', palette='viridis')
+plt.title('Top 10 Aircraft with the Lowest Total Accidents')
+plt.xlabel('Total Accidents')
+plt.ylabel('Aircraft')
+plt.show()
+```
+```
+# Bar Plot for Total Fatalities
+plt.figure(figsize=(12, 6))
+sns.barplot(data=safest_aircraft, x='total_fatalities_per_craft', y='aircraft', palette='magma')
+plt.title('Top 10 Aircraft with the Lowest Total Fatalities')
+plt.xlabel('Total Fatalities')
+plt.ylabel('Aircraft')
+plt.show()
+```
+```
+# Combined Plot
+plt.figure(figsize=(12, 6))
+sns.barplot(data=safest_aircraft, x='aircraft', y='total_accidents_per_craft', color='blue', label='Total Accidents')
+sns.barplot(data=safest_aircraft, x='aircraft', y='total_fatalities_per_craft', color='red', label='Total Fatalities', alpha=0.5)
+plt.title('Total Accidents and Fatalities for Top 10 Safest Aircraft')
+plt.xlabel('Aircraft')
+plt.ylabel('Count')
+plt.xticks(rotation=45)
+plt.legend()
+plt.show()
+```
+## want more?
+thats all for now. this analysis was kinda inaquarate due to the unknown values. it would be better if they are filled for better analysis 
