@@ -67,7 +67,7 @@ plt.xticks(rotation=45)
 # Adjust the layout to prevent overlap and ensure everything fits well in the figure and display the figure
 plt.tight_layout();
 ```
-<img src=(https://github.com/user-attachments/assets/bc7075cd-2358-4d79-91ce-0033af2fc215)/>
+
 ### accidents over time
 check whether the number of accidents has decreased over time and plot.
 
