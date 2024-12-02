@@ -342,5 +342,6 @@ plt.xticks(rotation=45)
 plt.legend()
 plt.show()
 ```
+ ![safest aircraft](https://github.com/user-attachments/assets/ad428ac0-95ef-4f9a-bb27-622193f42201)
 ## want more?
 thats all for now. this analysis was kinda inaquarate due to the unknown values. it would be better if they are filled for better analysis 
