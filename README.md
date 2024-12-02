@@ -3,11 +3,11 @@ Exploring the NTSB Aviation Accident Database
 ================
 
 My data is from kaggle:https://www.kaggle.com/datasets/khsamaha/aviation-accident-database-synopses
-and its about the NTSB aviation accident .it has 31 columns and 87951 rows. It hasinformation from 1962 and
+and its about the NTSB aviation accident .it has 31 columns and 87951 rows. It has information from 1962 and
 later about civil aviation accidents and selected incidents within the
 United States, its territories and possessions, and in international
 waters.
-
+My Tableau dashboard  on this data is https://public.tableau.com/views/aviationdone/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
 I want to explore this data set to find out which aircrafts have the lowest risk, how accident
 rates have changed over time,the comparison of accident rates on  different aircraft manufacturers
 and models, and to see how the data in this dataset correlate.
