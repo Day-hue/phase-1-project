@@ -104,7 +104,10 @@ plt.xticks(rotation=45)
 # Add a grid to the plot for easier visualization of trends and display
 plt.grid();
 ```
-But what about the number of fatalities per year? Let’s compute that and
+ ![accident trend over time](https://github.com/user-attachments/assets/ba3ed2fc-c272-4a22-8882-4a5e042f154a)
+
+### injury distribution analysis
+Let’s compute that and
 group by date again.
 ``` 
 # Calculate total injuries by aircraft category
