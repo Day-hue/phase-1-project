@@ -70,6 +70,7 @@ plt.tight_layout();
 <img src=(https://github.com/user-attachments/assets/bc7075cd-2358-4d79-91ce-0033af2fc215)/>
 ### accidents over time
 check whether the number of accidents has decreased over time and plot.
+
 ``` python
 # Group by year and count the number of accidents
 yearly_accident_counts = data1['year'].value_counts().reset_index()
