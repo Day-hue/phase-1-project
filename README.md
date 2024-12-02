@@ -2,7 +2,8 @@
 Exploring the NTSB Aviation Accident Database
 ================
 
-My data is from kaggle and its about the NTSB aviation accident . It contains information from 1962 and
+My data is from kaggle:https://www.kaggle.com/datasets/khsamaha/aviation-accident-database-synopses
+and its about the NTSB aviation accident .it has 31 columns and 87951 rows. It hasinformation from 1962 and
 later about civil aviation accidents and selected incidents within the
 United States, its territories and possessions, and in international
 waters.
