@@ -14,4 +14,35 @@ and models, and to see how the data in this dataset correlate.
 I notice that the file is a bit messed up. Some missing values and some are empty.hence I decide to clean 
 the data.
 
+## Importing data
+I load the packages and import the file into a dataframe. I"ll set a default view, specify encoding and let pandas handle the dtypes
+
+``` python
+#import libraries
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+#for default view
+pd.set_option("display.max_columns",50)
+
+#load dataset,specify encoding and let pandas handle the dtypes
+data=pd.read_csv('AviationData.csv',encoding='ISO-8859-1',low_memory=False)
+
+#view the first few rows of the dataset
+data.head()
+```
+
+So, this is how our data set appears straight
+away:
+
+
+
+
+
+
+
+
+
 
