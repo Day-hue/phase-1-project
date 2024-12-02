@@ -141,6 +141,7 @@ plt.xticks([i + bar_width for i in index], injuries_by_category['aircraft_catego
 plt.legend()
 plt.tight_layout();
 ```
+ ![distribution of injury severity](https://github.com/user-attachments/assets/a0b21d80-f790-4a52-a198-68dfed617841)
 ### what kind of injuries are there?
 
 we check what ere the most common injuries gotten
