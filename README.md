@@ -344,5 +344,10 @@ plt.legend()
 plt.show()
 ```
  ![safest aircraft](https://github.com/user-attachments/assets/ad428ac0-95ef-4f9a-bb27-622193f42201)
-## want more?
-thats all for now. this analysis was kinda inaquarate due to the unknown values. it would be better if they are filled for better analysis 
+## Summary
+
+in conclusion my recommendations are
+Find the unknown values then redo the analysis
+Continue following safety regulations to continue decreasing the accidents number 
+my findings are
+there is a positive correlatiob between the total no of injuries and all the other injuries
