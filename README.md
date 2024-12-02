@@ -170,9 +170,67 @@ plt.xticks(rotation=45)
 # Adjust the layout to prevent overlap and ensure everything fits well in the figure and display it
 plt.tight_layout();
 ```
+### what kind of damage did the aircraft get
+```
+# Count the number of occurrences of each damage type by aircraft category
+damage_by_category = data1.groupby(['aircraft_category', 'aircraft_damage']).size().unstack(fill_value=0)
+# Create a stacked bar plot to visualize the relationship between aircraft damage and aircraft category
+damage_by_category.plot(kind='bar', stacked=True, figsize=(12, 6), color=['lightcoral', 'lightblue', 'lightgreen'])
 
+# Set the title of the plot to describe what is being visualized
+plt.title('Aircraft Damage by Aircraft Category')
 
+# Label the x-axis to indicate what the categories represent
+plt.xlabel('Aircraft Category')
 
+# Label the y-axis to indicate what the values represent
+plt.ylabel('Number of Incidents')
+
+# Rotate the x-axis tick labels by 45 degrees for better readability
+plt.xticks(rotation=45)
+
+# Add a legend to the plot to indicate what each color represents in terms of aircraft damage
+plt.legend(title='Aircraft Damage')
+
+# Adjust the layout to prevent overlap and ensure everything fits well in the figure and display it
+plt.tight_layout();
+```
+### which makes and models have the highest accident rates
+```
+# Count the number of accidents by make and model
+accidents_by_make_model = data1.groupby(['make', 'model']).size().reset_index(name='accident_count')
+
+# Sort the results by accident count
+accidents_by_make_model = accidents_by_make_model.sort_values(by='accident_count', ascending=False)
+
+# Display the top results
+accidents_by_make_model.head(10)  # Display top 10 makes/models
+```
+plot
+
+```
+# Select the top 10 makes and models based on accident count
+top_makes_models = accidents_by_make_model.head(10)
+
+# Create a new figure with a specified size (width, height)
+plt.figure(figsize=(12, 6))
+
+# Create a horizontal bar plot to visualize the top makes and models by accident count
+# Concatenate 'make' and 'model' columns to create a single label for each bar
+plt.barh(top_makes_models['make'] + ' ' + top_makes_models['model'], top_makes_models['accident_count'], color='skyblue')
+
+# Set the title of the plot to describe what is being visualized
+plt.title('Top 10 Makes and Models by Accident Count')
+
+# Label the x-axis to indicate what the values represent
+plt.xlabel('Number of Accidents')
+
+# Label the y-axis to indicate what the categories represent
+plt.ylabel('Make and Model')
+
+# Adjust the layout to prevent overlap and ensure everything fits well in the figure and display it
+plt.tight_layout();
+```
 
 
 
